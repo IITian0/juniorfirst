@@ -17,6 +17,9 @@
 <meta name="author" content="Gaurav Kumar">
 <meta name="copyright" content="(c) 2026 Gaurav Kumar. All rights reserved.">
 <meta name="rights" content="JuniorFirst - built and owned by Gaurav Kumar.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="index, follow">
 <style>
   :root{
     --bg:#f6f8f7; --bg-grid:rgba(13,148,136,.05);
@@ -416,6 +419,10 @@
     .hero .stagger > *{opacity:1;animation:none}
     .hero h1 .u::after{animation:none}
     .btn-primary::after{animation:none}
+  }
+  @media print{
+    body *{visibility:hidden !important}
+    body::before{content:"(c) Gaurav Kumar - JuniorFirst. Printing or copying is not permitted.";position:fixed;inset:0;display:grid;place-items:center;text-align:center;padding:2rem;font-family:var(--font-body);font-size:20px;font-weight:700;color:#b45309;background:#fff;visibility:visible !important;z-index:99999}
   }
 </style>
 </head>
@@ -1890,14 +1897,16 @@
   });
   showScreen('home');
 
-  /* ---------- copy protection (deterrent, owned by Gaurav Kumar) ---------- */
+  /* ---------- security: no framing, no copying (owned by Gaurav Kumar) ---------- */
+  try { if (window.top !== window.self) { window.top.location = window.self.location.href; } }
+  catch (e) { document.body.textContent = 'This site cannot be embedded on another page. Open it directly at iitian0.github.io/juniorfirst'; }
   var RIGHTS = '© Gaurav Kumar — this site is protected. Please do not copy or re-host it.';
   document.addEventListener('contextmenu', function(e){ e.preventDefault(); toast(RIGHTS); });
   document.addEventListener('keydown', function(e){
     var k = (e.key || '').toLowerCase();
     var mod = e.ctrlKey || e.metaKey;
     if (e.key === 'F12') { e.preventDefault(); toast(RIGHTS); return; }
-    if (mod && (k === 'u' || k === 's')) { e.preventDefault(); toast(RIGHTS); return; }
+    if (mod && (k === 'u' || k === 's' || k === 'p')) { e.preventDefault(); toast(RIGHTS); return; }
     if (mod && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) { e.preventDefault(); toast(RIGHTS); return; }
   });
   document.addEventListener('copy', function(e){

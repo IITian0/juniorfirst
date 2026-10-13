@@ -1,0 +1,1931 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JuniorFirst — Free Notes & PYQs for Every BU Jhansi Student</title>
+<meta name="description" content="Free, login-free engineering notes, previous year question papers (PYQ) and syllabus for every branch at Bundelkhand University, Jhansi. No senior, no paywall, no ragging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d9488">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="JuniorFirst">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<meta name="author" content="Gaurav Kumar">
+<meta name="copyright" content="(c) 2026 Gaurav Kumar. All rights reserved.">
+<meta name="rights" content="JuniorFirst - built and owned by Gaurav Kumar.">
+<style>
+  :root{
+    --bg:#f6f8f7; --bg-grid:rgba(13,148,136,.05);
+    --surface:#ffffff; --surface-2:#eef3f2; --surface-3:#e4ecea;
+    --border:rgba(15,23,42,.09); --border-strong:rgba(15,23,42,.16);
+    --text:#0d1b1a; --text-dim:#5b6b6a; --text-faint:#8a9998;
+    --accent:#0d9488; --accent-strong:#0f766e; --accent-dim:#d5f2ee; --accent-ink:#04302c;
+    --gold:#c2740a; --gold-dim:#fbeccd;
+    --rust:#c2410c; --rust-dim:#fde8dd;
+    --shadow-sm:0 1px 2px rgba(13,27,26,.05), 0 1px 3px rgba(13,27,26,.04);
+    --shadow-md:0 4px 12px rgba(13,27,26,.07), 0 2px 4px rgba(13,27,26,.04);
+    --shadow-lg:0 18px 40px -18px rgba(13,27,26,.28), 0 6px 16px rgba(13,27,26,.06);
+    --radius:16px; --maxw:1180px;
+    --font-body:'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono:'Azeret Mono', ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  html[data-theme="dark"]{
+    --bg:#0a1413; --bg-grid:rgba(45,212,191,.06);
+    --surface:#101d1c; --surface-2:#162524; --surface-3:#1d2f2d;
+    --border:rgba(255,255,255,.09); --border-strong:rgba(255,255,255,.17);
+    --text:#e8f1ef; --text-dim:#9db0ad; --text-faint:#6d807d;
+    --accent:#2dd4bf; --accent-strong:#5eead4; --accent-dim:rgba(45,212,191,.14); --accent-ink:#04211e;
+    --gold:#e0a33c; --gold-dim:rgba(224,163,60,.15);
+    --rust:#f0805a; --rust-dim:rgba(240,128,90,.15);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3); --shadow-md:0 6px 16px rgba(0,0,0,.35);
+    --shadow-lg:0 22px 48px -20px rgba(0,0,0,.7), 0 8px 20px rgba(0,0,0,.3);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+  body::before{content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:linear-gradient(var(--bg-grid) 1px, transparent 1px), linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+    background-size:44px 44px; mask-image:radial-gradient(ellipse 100% 70% at 50% 0%, #000 20%, transparent 85%)}
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+  .mono{font-family:var(--font-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase}
+  .eyebrow{display:inline-flex; align-items:center; gap:.5rem; color:var(--accent-strong); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600}
+  .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* NAV */
+  header.nav{position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter:saturate(140%) blur(14px); -webkit-backdrop-filter:saturate(140%) blur(14px); border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex; align-items:center; gap:.9rem; min-height:66px; flex-wrap:wrap; padding:.5rem 0}
+  .brand{display:flex; align-items:center; gap:.6rem; font-weight:800; font-size:1.12rem; letter-spacing:-.02em; flex:0 0 auto}
+  .brand .logo{width:34px; height:34px; border-radius:9px; display:grid; place-items:center; background:linear-gradient(145deg,#0d9488,#0891b2); color:#fff; box-shadow:var(--shadow-sm); flex:0 0 auto}
+  .brand .logo svg{width:19px; height:19px}
+  .brand small{display:block; font-family:var(--font-mono); font-size:.55rem; letter-spacing:.16em; color:var(--text-faint); text-transform:uppercase; font-weight:500; margin-top:-2px}
+  .selectors{display:flex; gap:.5rem; flex-wrap:wrap}
+  .sel{display:flex; align-items:center; gap:.45rem; background:var(--surface); border:1px solid var(--border-strong); border-radius:10px; padding:.32rem .5rem .32rem .65rem; min-width:0}
+  .sel svg{width:15px; height:15px; color:var(--accent-strong); flex:0 0 auto}
+  .sel select{border:0; background:transparent; font-family:inherit; font-size:.82rem; font-weight:700; color:var(--text); cursor:pointer; outline:0; max-width:190px; text-overflow:ellipsis}
+  .sel select option{color:#0d1b1a}
+  .nav-links{display:flex; gap:.15rem; margin-left:auto}
+  .nav-links a{padding:.5rem .7rem; border-radius:9px; font-size:.89rem; font-weight:600; color:var(--text-dim); transition:.18s; white-space:nowrap}
+  .nav-links a:hover{background:var(--surface-2); color:var(--text)}
+  .nav-tools{display:flex; align-items:center; gap:.5rem}
+  .icon-btn{width:38px; height:38px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text-dim); display:grid; place-items:center; cursor:pointer; transition:.18s; flex:0 0 auto}
+  .icon-btn:hover{border-color:var(--border-strong); color:var(--text); background:var(--surface-2)}
+  .icon-btn svg{width:18px; height:18px}
+  .free-pill{display:inline-flex; align-items:center; gap:.4rem; font-family:var(--font-mono); font-size:.63rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600; color:var(--accent-ink); background:var(--accent-dim); border:1px solid color-mix(in srgb, var(--accent) 30%, transparent); padding:.4rem .7rem; border-radius:999px; white-space:nowrap}
+  .free-pill b{color:var(--accent-strong)}
+  .install-btn{display:none; align-items:center; gap:.4rem; font-family:var(--font-mono); font-size:.63rem; letter-spacing:.08em; text-transform:uppercase; font-weight:600; color:#fff; background:var(--accent); border:1px solid var(--accent); padding:.42rem .72rem; border-radius:999px; cursor:pointer; white-space:nowrap; transition:.18s}
+  .install-btn:hover{background:var(--accent-strong)}
+  html[data-theme="dark"] .install-btn{color:var(--accent-ink)}
+  .install-btn svg{width:14px; height:14px}
+  .install-btn.show{display:inline-flex}
+  .hamburger{display:grid}
+
+  /* HERO */
+  .hero{position:relative; padding:66px 0 34px; overflow:hidden}
+  .hero::after{content:""; position:absolute; top:-220px; right:-120px; width:620px; height:620px; z-index:-1; background:radial-gradient(circle at center, color-mix(in srgb, var(--accent) 22%, transparent), transparent 68%); opacity:.75}
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center}
+  .hero h1{font-size:clamp(2.1rem, 4.4vw, 3.3rem); line-height:1.06; letter-spacing:-.035em; font-weight:800; margin:1rem 0 0}
+  .hero h1 .u{color:var(--accent-strong); position:relative; white-space:nowrap}
+  .hero h1 .u::after{content:""; position:absolute; left:0; right:0; bottom:.04em; height:.34em; background:var(--accent-dim); border-radius:4px; z-index:-1}
+  .hero p.lead{font-size:1.07rem; color:var(--text-dim); max-width:56ch; margin:1.1rem 0 0}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.6rem}
+  .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.78rem 1.25rem; border-radius:11px; font-weight:700; font-size:.94rem; cursor:pointer; border:1px solid transparent; transition:.18s; white-space:nowrap}
+  .btn svg{width:17px; height:17px}
+  .btn-primary{background:var(--accent); color:#fff; box-shadow:var(--shadow-md)}
+  html[data-theme="dark"] .btn-primary{color:var(--accent-ink)}
+  .btn-primary:hover{background:var(--accent-strong); transform:translateY(-1px)}
+  .btn-ghost{background:var(--surface); border-color:var(--border-strong); color:var(--text)}
+  .btn-ghost:hover{background:var(--surface-2)}
+  .hero-note{margin-top:1rem; font-size:.82rem; color:var(--text-faint); display:flex; align-items:center; gap:.5rem}
+  .hero-note svg{width:15px; height:15px; color:var(--accent)}
+  .searchbar{display:flex; align-items:center; gap:.6rem; margin-top:1.7rem; padding:.55rem .6rem .55rem 1rem; background:var(--surface); border:1px solid var(--border-strong); border-radius:14px; box-shadow:var(--shadow-sm); max-width:520px}
+  .searchbar svg{width:19px; height:19px; color:var(--text-faint); flex:0 0 auto}
+  .searchbar input{border:0; outline:0; background:transparent; font-family:inherit; font-size:.98rem; color:var(--text); width:100%; padding:.35rem 0}
+  .searchbar input::placeholder{color:var(--text-faint)}
+  .searchbar .kbd{font-family:var(--font-mono); font-size:.62rem; color:var(--text-faint); border:1px solid var(--border); border-radius:6px; padding:.15rem .4rem}
+  .stat-card{background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:1.5rem; box-shadow:var(--shadow-lg)}
+  .stat-card .head{display:flex; align-items:center; justify-content:space-between; gap:.5rem; flex-wrap:wrap; margin-bottom:1.1rem}
+  .stat-card .head span{min-width:0}
+  .stat-card .head span{font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-faint)}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border-radius:14px; overflow:hidden; border:1px solid var(--border)}
+  .stat{background:var(--surface); padding:1.1rem 1rem}
+  .stat .num{font-size:1.7rem; font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:1}
+  .stat .num small{font-size:.9rem; font-weight:700; color:var(--accent-strong)}
+  .stat .lbl{font-size:.76rem; color:var(--text-dim); margin-top:.35rem}
+  .stat.hero-stat{background:linear-gradient(160deg, var(--accent), var(--accent-strong)); color:#fff}
+  html[data-theme="dark"] .stat.hero-stat{color:var(--accent-ink)}
+  .stat.hero-stat .num small, .stat.hero-stat .lbl{color:inherit; opacity:.9}
+  .stat-card .foot{margin-top:1rem; font-size:.78rem; color:var(--text-faint); display:flex; gap:.5rem; align-items:center}
+  .stat-card .foot svg{width:15px; height:15px; color:var(--accent)}
+
+  section{padding:60px 0}
+  .sec-head{margin-bottom:2rem; max-width:68ch}
+  .sec-head h2{font-size:clamp(1.55rem, 2.6vw, 2.1rem); letter-spacing:-.03em; font-weight:800; margin:.7rem 0 .5rem; line-height:1.12}
+  .sec-head p{color:var(--text-dim); margin:0; font-size:1.01rem}
+
+  /* BRANCH CARDS */
+  .branch-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem}
+  .branch{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.3rem; cursor:pointer; transition:.2s; text-align:left; font-family:inherit}
+  .branch:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--bc)}
+  .branch .dot{width:11px; height:11px; border-radius:50%; background:var(--bc); display:inline-block; box-shadow:0 0 0 5px color-mix(in srgb, var(--bc) 18%, transparent)}
+  .branch h3{font-size:1.02rem; margin:.9rem 0 .25rem; letter-spacing:-.01em}
+  .branch p{font-size:.82rem; color:var(--text-dim); margin:0}
+  .branch .cnt{font-family:var(--font-mono); font-size:.62rem; color:var(--text-faint); letter-spacing:.08em; margin-top:.7rem; display:block}
+  .branch.b-first{--bc:var(--accent)}
+  .branch.b-elec{--bc:var(--gold)}
+  .branch.b-mech{--bc:var(--rust)}
+  .branch.b-soon{--bc:var(--text-faint); cursor:default; border-style:dashed}
+  .branch.b-soon:hover{transform:none; box-shadow:none; border-color:var(--border)}
+
+  .filters{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem}
+  .chip{font-family:var(--font-mono); font-size:.7rem; letter-spacing:.05em; text-transform:uppercase; font-weight:500; padding:.45rem .8rem; border-radius:999px; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-dim); cursor:pointer; transition:.16s}
+  .chip:hover{color:var(--text); border-color:var(--accent)}
+  .chip.active{background:var(--accent); border-color:var(--accent); color:#fff}
+  html[data-theme="dark"] .chip.active{color:var(--accent-ink)}
+  .subj-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem}
+  .subject{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; display:flex; flex-direction:column; transition:.2s; position:relative; overflow:hidden}
+  .subject::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--bc, var(--accent)); transform:scaleY(0); transform-origin:top; transition:transform .25s}
+  .subject:hover{transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--border-strong)}
+  .subject:hover::before{transform:scaleY(1)}
+  .subject[data-branch="first-year"]{--bc:var(--accent)}
+  .subject[data-branch="electrical"]{--bc:var(--gold)}
+  .subject[data-branch="mechanical"]{--bc:var(--rust)}
+  .subject .code{font-family:var(--font-mono); font-size:.65rem; color:var(--text-dim); letter-spacing:.05em; display:flex; align-items:center; gap:.5rem}
+  .subject .code .bdot{width:8px; height:8px; border-radius:50%; background:var(--bc, var(--accent)); flex:0 0 auto}
+  .subject h3{font-size:1.05rem; margin:.55rem 0 .3rem; letter-spacing:-.02em; line-height:1.25}
+  .subject .desc{font-size:.85rem; color:var(--text-dim); flex:1}
+  .subject .tags{display:flex; flex-wrap:wrap; gap:.35rem; margin-top:1rem}
+  .tag{font-family:var(--font-mono); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase; padding:.22rem .5rem; border-radius:6px; background:var(--surface-2); color:var(--text-dim); border:1px solid var(--border)}
+  .tag.notes{background:var(--accent-dim); color:var(--accent-strong); border-color:transparent}
+  .tag.pyq{background:var(--gold-dim); color:var(--gold); border-color:transparent}
+  .subject .row{display:flex; align-items:center; justify-content:space-between; margin-top:1rem; padding-top:.85rem; border-top:1px solid var(--border)}
+  .subject .row .meta{font-size:.73rem; color:var(--text-faint)}
+  .subject .open{font-size:.8rem; font-weight:700; color:var(--accent-strong); display:inline-flex; align-items:center; gap:.3rem}
+  .subject .open svg{width:14px; height:14px; transition:transform .18s}
+  .subject:hover .open svg{transform:translateX(3px)}
+  .empty-msg{display:none; padding:2rem; text-align:center; color:var(--text-dim); border:1px dashed var(--border-strong); border-radius:var(--radius)}
+
+  .table-wrap{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-sm)}
+  .table-scroll{overflow-x:auto}
+  table{width:100%; border-collapse:collapse; min-width:680px}
+  thead th{text-align:left; font-family:var(--font-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); font-weight:600; padding:.9rem 1.1rem; background:var(--surface-2); border-bottom:1px solid var(--border)}
+  tbody td{padding:.95rem 1.1rem; border-bottom:1px solid var(--border); font-size:.9rem; vertical-align:middle}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr{transition:background .15s}
+  tbody tr:hover{background:var(--surface-2)}
+  tbody td .sub{font-weight:700}
+  tbody td .small{font-size:.75rem; color:var(--text-faint); display:block; margin-top:.1rem}
+  .yr{font-family:var(--font-mono); font-weight:600; color:var(--text)}
+  .badge{display:inline-flex; align-items:center; gap:.35rem; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; padding:.25rem .55rem; border-radius:6px; background:var(--accent-dim); color:var(--accent-strong); font-weight:600}
+  .dl{display:inline-flex; align-items:center; gap:.4rem; font-weight:700; font-size:.82rem; color:var(--accent-strong); border:1px solid color-mix(in srgb, var(--accent) 35%, transparent); background:var(--surface); padding:.45rem .8rem; border-radius:9px; transition:.16s; white-space:nowrap}
+  .dl:hover{background:var(--accent); color:#fff; border-color:var(--accent)}
+  html[data-theme="dark"] .dl:hover{color:var(--accent-ink)}
+  .dl svg{width:14px; height:14px}
+
+  .feat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .feat{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem}
+  .feat .ic{width:42px; height:42px; border-radius:11px; display:grid; place-items:center; background:var(--accent-dim); color:var(--accent-strong); margin-bottom:.9rem}
+  .feat .ic svg{width:21px; height:21px}
+  .feat h3{font-size:1.02rem; margin:0 0 .35rem; letter-spacing:-.01em}
+  .feat p{font-size:.88rem; color:var(--text-dim); margin:0}
+
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .step{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem}
+  .step .num{font-family:var(--font-mono); font-size:.7rem; font-weight:600; color:#fff; background:var(--accent); width:26px; height:26px; border-radius:8px; display:grid; place-items:center; margin-bottom:.9rem}
+  html[data-theme="dark"] .step .num{color:var(--accent-ink)}
+  .step h3{font-size:1rem; margin:0 0 .3rem}
+  .step p{font-size:.87rem; color:var(--text-dim); margin:0}
+
+  /* MISSION */
+  .mission{background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:2.4rem; box-shadow:var(--shadow-md)}
+  .mission .grid{display:grid; grid-template-columns:1.35fr 1fr; gap:2.4rem; align-items:center}
+  .mission h2{font-size:clamp(1.5rem,2.5vw,2rem); letter-spacing:-.03em; line-height:1.14; margin:.7rem 0 .9rem}
+  .mission p{color:var(--text-dim); font-size:1rem; margin:0 0 .9rem}
+  .mission .pulse{display:grid; gap:.8rem}
+  .mission .pulse .item{display:flex; gap:.8rem; align-items:flex-start; background:var(--surface-2); border:1px solid var(--border); border-radius:12px; padding:1rem}
+  .mission .pulse .item svg{width:20px; height:20px; color:var(--accent-strong); flex:0 0 auto; margin-top:.15rem}
+  .mission .pulse .item b{display:block; font-size:.94rem}
+  .mission .pulse .item span{font-size:.83rem; color:var(--text-dim)}
+
+  /* TEAM */
+  .team-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
+  .member{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; text-align:center}
+  .member .av{width:54px; height:54px; border-radius:50%; margin:0 auto .8rem; display:grid; place-items:center; font-weight:800; font-size:1.1rem; color:#fff; background:linear-gradient(145deg, var(--bc,var(--accent)), color-mix(in srgb, var(--bc,var(--accent)) 60%, #000))}
+  .member h3{font-size:1rem; margin:0 0 .2rem}
+  .member .role{font-family:var(--font-mono); font-size:.63rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint)}
+  .member p{font-size:.84rem; color:var(--text-dim); margin:.7rem 0 0}
+  .member.m-first{--bc:var(--accent)} .member.m-elec{--bc:var(--gold)} .member.m-mech{--bc:var(--rust)}
+
+  .banner{background:linear-gradient(135deg, var(--accent-strong), var(--accent)); color:#fff; border-radius:24px; padding:2.6rem; display:grid; grid-template-columns:1.4fr 1fr; gap:2rem; align-items:center; position:relative; overflow:hidden; box-shadow:var(--shadow-lg)}
+  html[data-theme="dark"] .banner{color:var(--accent-ink)}
+  .banner::after{content:""; position:absolute; right:-60px; bottom:-80px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,.12)}
+  .banner h2{font-size:clamp(1.5rem,2.6vw,2.1rem); margin:.5rem 0 .6rem; letter-spacing:-.03em; line-height:1.12}
+  .banner p{margin:0 0 1.3rem; opacity:.92; max-width:48ch}
+  .banner .eyebrow{color:#fff}
+  .banner .eyebrow::before{background:#fff; box-shadow:0 0 0 4px rgba(255,255,255,.22)}
+  .banner .btn-light{background:#fff; color:var(--accent-strong)}
+  .banner .btn-outline{background:transparent; border-color:rgba(255,255,255,.55); color:#fff}
+  .banner .btn-outline:hover{background:rgba(255,255,255,.14)}
+  .banner .mini{display:flex; gap:1.4rem; flex-wrap:wrap}
+  .banner .mini .n{font-size:1.5rem; font-weight:800; letter-spacing:-.02em}
+  .banner .mini .l{font-size:.74rem; opacity:.85}
+
+  footer{border-top:1px solid var(--border); padding:3rem 0 2rem; margin-top:2rem; background:var(--surface-2)}
+  .foot-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:2rem}
+  .foot-grid h4{font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-faint); margin:0 0 .9rem}
+  .foot-grid ul{list-style:none; padding:0; margin:0; display:grid; gap:.55rem}
+  .foot-grid a{font-size:.88rem; color:var(--text-dim)}
+  .foot-grid a:hover{color:var(--accent-strong)}
+  .foot-about p{font-size:.88rem; color:var(--text-dim); max-width:38ch; margin:.9rem 0 0}
+  .foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; margin-top:2.4rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:.8rem; color:var(--text-faint)}
+
+  .reveal{opacity:0; transform:translateY(16px); animation:reveal .6s cubic-bezier(.2,.7,.3,1) forwards}
+  @keyframes reveal{to{opacity:1; transform:none}}
+  @media (prefers-reduced-motion:reduce){ .reveal{animation:none; opacity:1; transform:none} html{scroll-behavior:auto} }
+
+  @media (max-width:1040px){
+    .hero-grid{grid-template-columns:1fr; gap:32px}
+    .subj-grid{grid-template-columns:repeat(2,1fr)}
+    .feat-grid,.steps,.team-grid{grid-template-columns:1fr}
+    .branch-grid{grid-template-columns:repeat(2,1fr)}
+    .mission .grid{grid-template-columns:1fr; gap:1.6rem}
+    .banner{grid-template-columns:1fr; padding:2rem}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+    .hamburger{display:grid}
+  }
+  @media (max-width:640px){
+    .selectors{order:3; flex-basis:100%}
+    .sel{flex:1}
+    .sel select{max-width:100%; width:100%}
+    .free-pill{display:none}
+  }
+  @media (max-width:560px){
+    .subj-grid{grid-template-columns:1fr}
+    .branch-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    section{padding:46px 0}
+    .hero{padding:44px 0 20px}
+    .mission{padding:1.6rem}
+  }
+
+  :root{ --bc-civil:#0369a1; --bc-cse:#15803d; --bc-ece:#b91c1c; --bc-ei:#0891b2; --bc-biotech:#4d7c0f; --bc-food:#be185d; --bc-biomedical:#475569; }
+  html[data-theme="dark"]{ --bc-civil:#38bdf8; --bc-cse:#4ade80; --bc-ece:#f87171; --bc-ei:#22d3ee; --bc-biotech:#a3e635; --bc-food:#f472b6; --bc-biomedical:#94a3b8; }
+  .branch[data-branch="first-year"],.subject[data-branch="first-year"],.member[data-branch="first-year"]{--bc:var(--accent)}
+  .branch[data-branch="electrical"],.subject[data-branch="electrical"],.member[data-branch="electrical"]{--bc:var(--gold)}
+  .branch[data-branch="mechanical"],.subject[data-branch="mechanical"],.member[data-branch="mechanical"]{--bc:var(--rust)}
+  .branch[data-branch="civil"],.subject[data-branch="civil"]{--bc:var(--bc-civil)}
+  .branch[data-branch="cse"],.subject[data-branch="cse"]{--bc:var(--bc-cse)}
+  .branch[data-branch="ece"],.subject[data-branch="ece"]{--bc:var(--bc-ece)}
+  .branch[data-branch="ei"],.subject[data-branch="ei"]{--bc:var(--bc-ei)}
+  .branch[data-branch="biotech"],.subject[data-branch="biotech"]{--bc:var(--bc-biotech)}
+  .branch[data-branch="food"],.subject[data-branch="food"]{--bc:var(--bc-food)}
+  .branch[data-branch="biomedical"],.subject[data-branch="biomedical"]{--bc:var(--bc-biomedical)}
+  .branch[data-branch]:hover{border-color:var(--bc)}
+
+  /* ===== COLOUR + APP POLISH ===== */
+  header.nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:linear-gradient(90deg,#0d9488,#0891b2,#15803d,#d97706,#be185d)}
+  html[data-theme="dark"] header.nav::after{opacity:.8}
+  .hero::before{content:"";position:absolute;top:-140px;left:-100px;width:520px;height:520px;z-index:-1;background:radial-gradient(circle at center, rgba(217,119,6,.18), transparent 66%)}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-strong))}
+  .branch{background:linear-gradient(180deg, color-mix(in srgb, var(--bc) 12%, var(--surface)), var(--surface));border-top:3px solid var(--bc)}
+  .subject{cursor:pointer}
+  .subject:hover{background:color-mix(in srgb, var(--bc) 7%, var(--surface))}
+  .subject .open{background:color-mix(in srgb, var(--bc) 15%, transparent);color:var(--text);padding:.26rem .6rem;border-radius:8px}
+  .subject:hover .open{background:var(--bc);color:#fff}
+  html[data-theme="dark"] .subject:hover .open{color:#04211e}
+  .subject .bm{position:absolute;top:.7rem;right:.7rem;width:30px;height:30px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text-faint);display:grid;place-items:center;cursor:pointer;transition:.18s;z-index:2;padding:0}
+  .subject .bm svg{width:15px;height:15px}
+  .subject .bm:hover{color:var(--accent);border-color:var(--accent)}
+  .subject.saved .bm{color:#fff;background:var(--gold);border-color:var(--gold)}
+  html[data-theme="dark"] .subject.saved .bm{color:#04211e}
+  .sheet-backdrop{position:fixed;inset:0;background:rgba(4,17,15,.55);opacity:0;pointer-events:none;transition:.25s;z-index:80}
+  .sheet-backdrop.show{opacity:1;pointer-events:auto}
+  .sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,112%);opacity:0;visibility:hidden;pointer-events:none;width:min(620px,100%);max-height:90vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);z-index:90;transition:transform .34s cubic-bezier(.2,.8,.25,1),opacity .25s;padding:1.1rem 1.3rem 1.6rem}
+  .sheet.show{transform:translate(-50%,0);opacity:1;visibility:visible;pointer-events:auto}
+  .sheet .handle{width:42px;height:4px;border-radius:3px;background:var(--border-strong);margin:.2rem auto 1rem}
+  .sheet .x{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text-dim);cursor:pointer;font-size:1.1rem;line-height:1}
+  .sheet h2{font-size:1.35rem;letter-spacing:-.02em;margin:.3rem 0 .5rem}
+  .sheet .code{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-strong)}
+  .sheet p{color:var(--text-dim);font-size:.94rem;margin:.4rem 0 .8rem}
+  .act-row{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+  .act{display:inline-flex;align-items:center;gap:.45rem;padding:.68rem 1rem;border-radius:11px;font-weight:700;font-size:.88rem;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;font-family:inherit;transition:.16s}
+  .act:hover{background:var(--surface-2)}
+  .act.primary{background:linear-gradient(135deg,var(--accent),var(--accent-strong));color:#fff;border-color:transparent}
+  html[data-theme="dark"] .act.primary{color:var(--accent-ink)}
+  .field{display:grid;gap:.35rem;margin-bottom:.85rem}
+  .field label{font-size:.78rem;font-weight:600;color:var(--text-dim)}
+  .field input,.field select{font-family:inherit;font-size:.92rem;padding:.62rem .8rem;border-radius:10px;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--text);outline:0}
+  .field input:focus,.field select:focus{border-color:var(--accent)}
+  .toast{position:fixed;left:50%;bottom:84px;transform:translate(-50%,16px);background:var(--text);color:var(--bg);padding:.7rem 1.1rem;border-radius:12px;font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:120;max-width:92vw;text-align:center}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .tabbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:.35rem .3rem calc(.35rem + env(safe-area-inset-bottom));gap:.2rem}
+  .tabbar a,.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:.2rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text-dim);padding:.45rem .2rem;border-radius:10px;border:0;background:transparent;cursor:pointer;text-decoration:none}
+  .tabbar a svg,.tabbar button svg{width:20px;height:20px}
+  .tabbar a:active,.tabbar button:active{background:var(--surface-2)}
+  @media(max-width:640px){.tabbar{display:flex}body{padding-bottom:66px}}
+  @media(min-width:700px){.sheet{bottom:auto;top:50%;transform:translate(-50%,-46%) scale(.98);border-radius:22px;max-height:86vh}.sheet.show{transform:translate(-50%,-50%) scale(1)}}
+  /* extra colour */
+  .free-pill{background:linear-gradient(135deg, rgba(13,148,136,.18), rgba(217,119,6,.20));border-color:color-mix(in srgb, var(--accent) 34%, transparent)}
+  .chip.active{background:linear-gradient(135deg,var(--accent),var(--accent-strong));border-color:transparent}
+  .banner{background:linear-gradient(120deg,#0f766e,#0d9488,#0891b2)}
+  .stat.hero-stat{background:linear-gradient(150deg,#0d9488,#0891b2)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--text)}
+  .branch{position:relative}
+  .branch:hover{box-shadow:0 10px 24px -12px color-mix(in srgb, var(--bc) 60%, transparent)}
+  .shayari{margin:1.1rem 0 0;font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--accent-strong);border-left:3px solid var(--accent);padding:.1rem 0 .1rem .95rem;max-width:54ch}
+  .totop{position:fixed;right:18px;bottom:24px;z-index:75;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(10px);transition:.25s}
+  .totop.show{opacity:1;visibility:visible;transform:none}
+  .totop svg{width:20px;height:20px}
+  @media(max-width:640px){.totop{bottom:84px}}
+  .book-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+  .book{display:flex;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;transition:.2s}
+  .book:hover{box-shadow:var(--shadow-md);border-color:var(--border-strong)}
+  .book .cover{flex:0 0 auto;width:72px;height:96px;border-radius:8px;display:grid;place-items:center;font-family:var(--font-mono);font-size:.6rem;font-weight:600;color:#fff;text-align:center;padding:.3rem;background:linear-gradient(160deg,var(--bc,var(--accent)),color-mix(in srgb,var(--bc,var(--accent)) 55%,#000))}
+  .book .book-body{display:flex;flex-direction:column;min-width:0}
+  .book .code{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--text-faint)}
+  .book h3{font-size:1.02rem;margin:.35rem 0 .25rem;letter-spacing:-.01em}
+  .book .desc{font-size:.85rem;color:var(--text-dim);margin:0 0 .7rem}
+  .book .tags{margin-bottom:.8rem}
+  .book .dl{align-self:flex-start;margin-top:auto}
+  .book.book-soon .cover{background:var(--surface-2);color:var(--text-faint);border:1px dashed var(--border-strong)}
+  .act.book{background:linear-gradient(135deg,#d97706,#b45309);color:#fff;border-color:transparent}
+  @media(max-width:560px){.book-grid{grid-template-columns:1fr}}
+  .syl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+  .syl{display:flex;flex-direction:column;gap:.7rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem}
+  .syl h3{font-size:.95rem;margin:0;letter-spacing:-.01em}
+  .syl .dl{align-self:flex-start;margin-top:auto}
+  .tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .tip{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem}
+  .tip .num{font-family:var(--font-mono);font-size:.7rem;font-weight:600;color:#fff;background:var(--accent);width:26px;height:26px;border-radius:8px;display:grid;place-items:center;margin-bottom:.8rem}
+  html[data-theme="dark"] .tip .num{color:var(--accent-ink)}
+  .tip h3{font-size:.98rem;margin:0 0 .3rem}
+  .tip p{font-size:.86rem;color:var(--text-dim);margin:0}
+  .faq{display:grid;gap:.6rem;max-width:840px}
+  .faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.2rem 1.05rem}
+  .faq summary{cursor:pointer;font-weight:700;font-size:.96rem;padding:.85rem 0;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";float:right;color:var(--accent-strong);font-weight:700}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq details p{margin:0 0 .95rem;color:var(--text-dim);font-size:.9rem}
+  @media(max-width:1040px){.syl-grid{grid-template-columns:repeat(2,1fr)}.tip-grid{grid-template-columns:1fr}}
+  @media(max-width:560px){.syl-grid{grid-template-columns:1fr}}
+  .nav-tools{margin-left:auto}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(4,17,15,.5);opacity:0;pointer-events:none;transition:.25s;z-index:100}
+  .drawer-backdrop.show{opacity:1;pointer-events:auto}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:min(340px,86vw);background:var(--surface);border-left:1px solid var(--border);box-shadow:var(--shadow-lg);transform:translateX(105%);transition:transform .3s cubic-bezier(.2,.8,.25,1);z-index:110;display:flex;flex-direction:column;overflow:auto}
+  .drawer.show{transform:none}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.1rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:1}
+  .drawer-brand{font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
+  .drawer .x{width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text-dim);cursor:pointer;font-size:1.1rem;line-height:1}
+  .drawer-links{display:flex;flex-direction:column;padding:.5rem}
+  .drawer-links a,.drawer-links button{text-align:left;font-family:inherit;font-size:.98rem;font-weight:600;color:var(--text);background:transparent;border:0;border-radius:10px;padding:.72rem .85rem;cursor:pointer;transition:.15s}
+  .drawer-links a:hover,.drawer-links button:hover{background:var(--surface-2)}
+  .drawer-links .drawer-share{background:linear-gradient(135deg,var(--accent),var(--accent-strong));color:#fff;margin:.5rem .35rem .8rem;text-align:center}
+  html[data-theme="dark"] .drawer-links .drawer-share{color:var(--accent-ink)}
+  .drawer-label{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);padding:.9rem .85rem .3rem}
+  body{-webkit-user-select:none;user-select:none}
+  input,textarea,select{-webkit-user-select:text;user-select:text}
+  img{-webkit-user-drag:none;user-drag:none}
+  /* hero animations */
+  @keyframes heroFloatA{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,24px)}}
+  @keyframes heroFloatB{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-20px)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes growLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes shimmer{0%,72%{left:-130%}100%{left:170%}}
+  .hero::after{animation:heroFloatA 16s ease-in-out infinite}
+  .hero::before{animation:heroFloatB 20s ease-in-out infinite}
+  .hero .stagger > *{animation:fadeUp .72s cubic-bezier(.2,.7,.3,1) both}
+  .hero .stagger > *:nth-child(1){animation-delay:.05s}
+  .hero .stagger > *:nth-child(2){animation-delay:.15s}
+  .hero .stagger > *:nth-child(3){animation-delay:.25s}
+  .hero .stagger > *:nth-child(4){animation-delay:.35s}
+  .hero .stagger > *:nth-child(5){animation-delay:.45s}
+  .hero .stagger > *:nth-child(6){animation-delay:.55s}
+  .hero h1 .u::after{transform-origin:left center;animation:growLine .85s .55s cubic-bezier(.2,.7,.3,1) both}
+  .btn-primary{position:relative;overflow:hidden}
+  .btn-primary::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);animation:shimmer 5s ease-in-out infinite;pointer-events:none}
+  @media (prefers-reduced-motion:reduce){
+    .hero::before,.hero::after{animation:none}
+    .hero .stagger > *{opacity:1;animation:none}
+    .hero h1 .u::after{animation:none}
+    .btn-primary::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="JuniorFirst home">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 11.4C13.7 10.1 10.6 9.8 7.2 10.7v10.6c3.4-.9 6.5-.6 8.8.7 2.3-1.3 5.4-1.6 8.8-.7V10.7c-3.4-.9-6.5-.6-8.8.7z" fill="#fff"/><path d="M16 11.4v10.6" stroke="rgba(4,33,30,.22)" stroke-width="1.1" fill="none"/></svg></span>
+      <span>JuniorFirst<small>Notes &amp; Papers Library</small></span>
+    </a>
+
+    <div class="selectors">
+      <label class="sel" title="Choose your university">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <select id="univSelect" aria-label="Choose your university">
+          <option value="bu" selected>Bundelkhand University, Jhansi</option>
+          <option value="aktu" disabled>Dr. A.P.J. Abdul Kalam Technical University</option>
+          <option value="sppu" disabled>Savitribai Phule Pune University</option>
+          <option value="vtu" disabled>Visvesvaraya Technological University</option>
+          <option value="other" disabled>Other universities (coming soon)</option>
+        </select>
+      </label>
+      <label class="sel" title="Choose your branch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 16l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg>
+        <select id="branchSelect" aria-label="Choose your branch">
+          <option value="all" selected>All branches</option>
+          <option value="first-year">First Year (Common)</option>
+          <option value="electrical">Electrical Engineering</option>
+          <option value="mechanical">Mechanical Engineering</option>
+          <option value="civil">Civil Engineering</option>
+          <option value="cse">Computer Science & Engineering</option>
+          <option value="ece">Electronics & Communication</option>
+          <option value="ei">Electronics & Instrumentation</option>
+          <option value="biotech">Biotechnology</option>
+          <option value="food">Food Technology</option>
+          <option value="biomedical">Biomedical Engineering</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="nav-tools">
+      <button class="install-btn" id="installBtn" title="Install as an app">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Install app
+      </button>
+      <span class="free-pill" title="Every resource is free"><b>100%</b> Free</span>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn hamburger" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head">
+    <span class="drawer-brand">JuniorFirst</span>
+    <button class="x" id="drawerClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-links">
+    <a data-screen="home">Home</a>
+    <div class="drawer-label">Study</div>
+    <a data-screen="branches">Branches</a>
+    <a data-screen="subjects">Subjects</a>
+    <a data-screen="books">Books</a>
+    <a data-screen="pyq">Previous year papers</a>
+    <a data-screen="formulas">Formula sheets</a>
+    <a data-screen="syllabus">Syllabus</a>
+    <div class="drawer-label">Help</div>
+    <a data-screen="tips">Exam tips</a>
+    <a data-screen="faq">FAQ</a>
+    <a data-screen="how">How it works</a>
+    <div class="drawer-label">More</div>
+    <a data-screen="mission">Why this exists</a>
+    <a data-screen="team">Team</a>
+    <button type="button" class="drawer-share" id="drawerShare">Share your notes</button>
+  </nav>
+</aside>
+
+<main id="top">
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="stagger">
+      <span class="eyebrow">Bundelkhand University, Jhansi · All departments</span>
+      <h1>Study material for every BU Jhansi department — <span class="u">free, no strings</span>.</h1>
+      <p class="shayari">No asking, no favours, no fee to pay —<br>notes for your subject, books on the way,<br>a library open to all, every day.</p>
+      <p class="lead">Unit-wise notes, previous year question papers and the syllabus, sorted by department and semester. Pick your subject, download the PDF, and get straight to revising. No account, no fee, and no one you have to ask.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#branches">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6"/></svg>
+          Pick your branch
+        </a>
+        <a class="btn btn-ghost" href="#pyq">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Get PYQ papers
+        </a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Everything opens instantly — and works offline after your first visit.
+      </p>
+    </div>
+
+    <aside class="stat-card reveal" style="animation-delay:.12s" aria-label="Library at a glance">
+      <div class="head">
+        <span>Library at a glance</span>
+        <span class="mono" style="color:var(--accent-strong)">BU Jhansi</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat hero-stat"><div class="num">₹0<small> forever</small></div><div class="lbl">Cost to every student</div></div>
+        <div class="stat"><div class="num"><span data-count="94">94</span><small>+</small></div><div class="lbl">Subjects covered</div></div>
+        <div class="stat"><div class="num"><span data-count="10">10</span></div><div class="lbl">Departments covered</div></div>
+        <div class="stat"><div class="num"><span data-count="8">8</span></div><div class="lbl">Semesters mapped</div></div>
+      </div>
+      <div class="foot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
+        Open access — no account, no tracking, no ads.
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="branches" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Start here</span>
+      <h2>Pick your department</h2>
+      <p>Semesters 1 and 2 are the same for every B.Tech student at Bundelkhand University. From semester 3 onward, choose your own department to see its subjects.</p>
+    </div>
+    <div class="branch-grid">
+      <button class="branch" data-branch="first-year">
+        <span class="dot"></span>
+        <h3>First Year (Common)</h3>
+        <p>Maths, Physics, Chemistry, BEE, Programming — the foundation for every branch.</p>
+        <span class="cnt">10 subjects · Sem 1–2</span>
+      </button>
+      <button class="branch" data-branch="electrical">
+        <span class="dot"></span>
+        <h3>Electrical Engineering</h3>
+        <p>Circuits, machines, power systems, control and power electronics.</p>
+        <span class="cnt">12 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="mechanical">
+        <span class="dot"></span>
+        <h3>Mechanical Engineering</h3>
+        <p>Thermodynamics, fluids, strength of materials, machines and design.</p>
+        <span class="cnt">11 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="civil">
+        <span class="dot"></span>
+        <h3>Civil Engineering</h3>
+        <p>Surveying, structures, geotech, transportation and environment.</p>
+        <span class="cnt">10 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="cse">
+        <span class="dot"></span>
+        <h3>Computer Science & Engineering</h3>
+        <p>DSA, DBMS, OS, networks, software engineering and algorithms.</p>
+        <span class="cnt">11 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="ece">
+        <span class="dot"></span>
+        <h3>Electronics &amp; Communication</h3>
+        <p>Devices, signals, communication, DSP, VLSI, embedded systems and antennas.</p>
+        <span class="cnt">14 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="ei">
+        <span class="dot"></span>
+        <h3>Electronics & Instrumentation</h3>
+        <p>Sensors, transducers, process control and instrumentation.</p>
+        <span class="cnt">7 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="biotech">
+        <span class="dot"></span>
+        <h3>Biotechnology</h3>
+        <p>Biochemistry, microbiology, bioprocess and genetic engineering.</p>
+        <span class="cnt">7 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="food">
+        <span class="dot"></span>
+        <h3>Food Technology</h3>
+        <p>Food chemistry, microbiology, processing and preservation.</p>
+        <span class="cnt">6 subjects · Sem 3–8</span>
+      </button>
+      <button class="branch" data-branch="biomedical">
+        <span class="dot"></span>
+        <h3>Biomedical Engineering</h3>
+        <p>Anatomy, biomaterials, medical imaging and instrumentation.</p>
+        <span class="cnt">6 subjects · Sem 3–8</span>
+      </button>
+      <div class="branch b-soon">
+        <span class="dot"></span>
+        <h3>Not listed?</h3>
+        <p>Tell us your department and we will add it in the next update.</p>
+        <span class="cnt">Request a branch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subjects" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Subject library · BU Jhansi</span>
+      <h2>Notes, question papers and formula sheets, subject by subject</h2>
+      <p>Open a subject for unit-wise notes, its previous year papers and a short revision sheet. Every file downloads as a PDF.</p>
+    </div>
+
+    <div class="searchbar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="heroSearch" placeholder="Search a subject, e.g. Thermodynamics, BEE, Control Systems…" aria-label="Search subjects">
+    </div>
+
+    <div class="filters" id="subjFilters" role="tablist" aria-label="Filter subjects">
+      <button class="chip active" data-filter="all">All branches</button>
+      <button class="chip" data-filter="first-year">First Year</button>
+      <button class="chip" data-filter="electrical">Electrical</button>
+      <button class="chip" data-filter="mechanical">Mechanical</button>
+      <button class="chip" data-filter="civil">Civil</button>
+      <button class="chip" data-filter="cse">CSE</button>
+      <button class="chip" data-filter="ece">ECE</button>
+      <button class="chip" data-filter="ei">E&I</button>
+      <button class="chip" data-filter="biotech">Biotech</button>
+      <button class="chip" data-filter="food">Food Tech</button>
+      <button class="chip" data-filter="biomedical">Biomedical</button>
+    </div>
+
+    <div class="subj-grid" id="subjGrid">
+      <article class="subject" data-branch="first-year" data-name="first-year ma-101 mathematics-i common">
+        <div class="code"><span class="bdot"></span>MA-101 · SEM 1</div>
+        <h3>Mathematics-I</h3>
+        <p class="desc">Differential calculus, partial differentiation, Euler's theorem, Jacobians, maxima-minima and Lagrange multipliers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Formula sheet</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year ma-201 mathematics-ii common">
+        <div class="code"><span class="bdot"></span>MA-201 · SEM 2</div>
+        <h3>Mathematics-II</h3>
+        <p class="desc">Integral calculus, multiple integrals, differential equations, series and vector calculus.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Formula sheet</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year ph-101 engineering physics common" data-book="https://drive.google.com/file/d/1MqrrirYNsGV_NIZHQvykIiIlQG0W1gYi/view">
+        <div class="code"><span class="bdot"></span>PH-101 · SEM 1</div>
+        <h3>Engineering Physics</h3>
+        <p class="desc">Wave optics, interference and diffraction, lasers, fibre optics, EM theory and nano-materials.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Teacher's book</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year cy-101 engineering chemistry common">
+        <div class="code"><span class="bdot"></span>CY-101 · SEM 1</div>
+        <h3>Engineering Chemistry</h3>
+        <p class="desc">Atomic and molecular structure, water technology, electrochemistry, fuels and polymers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year ee-101 electrical engineering (bee) common">
+        <div class="code"><span class="bdot"></span>EE-101 · SEM 1</div>
+        <h3>Electrical Engineering (BEE)</h3>
+        <p class="desc">DC networks, single and three-phase AC, measuring instruments, transformers and machines.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Solved</span></div>
+        <div class="row"><span class="meta">5 units · 10 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year ec-101 electronics engineering common">
+        <div class="code"><span class="bdot"></span>EC-101 · SEM 1</div>
+        <h3>Electronics Engineering</h3>
+        <p class="desc">Semiconductors, PN-junction diodes, rectifiers, transistors, biasing and amplifiers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year cs-101 computer concepts & programming in c common">
+        <div class="code"><span class="bdot"></span>CS-101 · SEM 1</div>
+        <h3>Computer Concepts & Programming in C</h3>
+        <p class="desc">Computer fundamentals, C basics, control flow, arrays, pointers, structures and files.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Lab</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year me-201 engineering mechanics common">
+        <div class="code"><span class="bdot"></span>ME-201 · SEM 2</div>
+        <h3>Engineering Mechanics</h3>
+        <p class="desc">Statics, friction, trusses, centroid, moment of inertia and dynamics.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year hu-101 professional communication common">
+        <div class="code"><span class="bdot"></span>HU-101 · SEM 1-2</div>
+        <h3>Professional Communication</h3>
+        <p class="desc">Technical writing, grammar, comprehension, report writing and presentations.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="first-year" data-name="first-year ce-101 environment & ecology common">
+        <div class="code"><span class="bdot"></span>CE-101 · SEM 1-2</div>
+        <h3>Environment & Ecology</h3>
+        <p class="desc">Ecosystems, natural resources, pollution, environmental policy and sustainability.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-301 electrical circuit analysis ee">
+        <div class="code"><span class="bdot"></span>EE-301 · SEM 3</div>
+        <h3>Electrical Circuit Analysis</h3>
+        <p class="desc">Network elements, KCL/KVL, mesh and nodal analysis, network theorems, transients, resonance.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Solved</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-302 electrical machines-i ee">
+        <div class="code"><span class="bdot"></span>EE-302 · SEM 3</div>
+        <h3>Electrical Machines-I</h3>
+        <p class="desc">DC generators and motors, EMF and torque equations, characteristics, transformers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ec-301 digital electronics ee">
+        <div class="code"><span class="bdot"></span>EC-301 · SEM 3</div>
+        <h3>Digital Electronics</h3>
+        <p class="desc">Number systems, Boolean algebra, K-maps, combinational and sequential circuits.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-303 electromagnetic engineering ee">
+        <div class="code"><span class="bdot"></span>EE-303 · SEM 3</div>
+        <h3>Electromagnetic Engineering</h3>
+        <p class="desc">Electrostatics, magnetostatics, Maxwell's equations and EM wave propagation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-401 electrical measurement & instrumentation ee">
+        <div class="code"><span class="bdot"></span>EE-401 · SEM 4</div>
+        <h3>Electrical Measurement & Instrumentation</h3>
+        <p class="desc">PMMC and moving-iron instruments, bridges, wattmeters, transducers and errors.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-402 electrical machines-ii ee">
+        <div class="code"><span class="bdot"></span>EE-402 · SEM 4</div>
+        <h3>Electrical Machines-II</h3>
+        <p class="desc">Three-phase induction motors, synchronous machines, slip-torque and testing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-403 power systems ee">
+        <div class="code"><span class="bdot"></span>EE-403 · SEM 4-5</div>
+        <h3>Power Systems</h3>
+        <p class="desc">Generation, transmission lines, insulators, cables, distribution, load flow and faults.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-501 control systems ee">
+        <div class="code"><span class="bdot"></span>EE-501 · SEM 5</div>
+        <h3>Control Systems</h3>
+        <p class="desc">Transfer functions, Routh-Hurwitz, root locus, Bode and Nyquist plots, compensators.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-502 power electronics ee">
+        <div class="code"><span class="bdot"></span>EE-502 · SEM 5</div>
+        <h3>Power Electronics</h3>
+        <p class="desc">Power devices, rectifiers, choppers, inverters and AC voltage controllers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-601 microprocessors & microcontrollers ee">
+        <div class="code"><span class="bdot"></span>EE-601 · SEM 6</div>
+        <h3>Microprocessors & Microcontrollers</h3>
+        <p class="desc">8085 and 8051 architecture, instruction sets, assembly and interfacing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-701 switchgear & protection ee">
+        <div class="code"><span class="bdot"></span>EE-701 · SEM 7</div>
+        <h3>Switchgear & Protection</h3>
+        <p class="desc">Fuses, circuit breakers, relays and protection of lines, transformers and generators.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="electrical" data-name="electrical ee-702 utilization of electrical power ee">
+        <div class="code"><span class="bdot"></span>EE-702 · SEM 7</div>
+        <h3>Utilization of Electrical Power</h3>
+        <p class="desc">Traction, illumination, heating, welding, electrolysis and industrial applications.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-301 engineering thermodynamics me">
+        <div class="code"><span class="bdot"></span>ME-301 · SEM 3</div>
+        <h3>Engineering Thermodynamics</h3>
+        <p class="desc">Zeroth to second law, entropy, thermodynamic relations, availability and cycles.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-302 fluid mechanics & machinery me">
+        <div class="code"><span class="bdot"></span>ME-302 · SEM 3</div>
+        <h3>Fluid Mechanics & Machinery</h3>
+        <p class="desc">Fluid statics, Bernoulli and momentum, pipe flow, pumps and turbines.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-303 strength of materials me">
+        <div class="code"><span class="bdot"></span>ME-303 · SEM 3</div>
+        <h3>Strength of Materials</h3>
+        <p class="desc">Stress and strain, shear force and bending moment, torsion, columns and springs.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-401 theory of machines me">
+        <div class="code"><span class="bdot"></span>ME-401 · SEM 4</div>
+        <h3>Theory of Machines</h3>
+        <p class="desc">Kinematics, cams, gears, gear trains, governors, balancing and vibrations.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-402 manufacturing processes me">
+        <div class="code"><span class="bdot"></span>ME-402 · SEM 4</div>
+        <h3>Manufacturing Processes</h3>
+        <p class="desc">Casting, welding, metal forming, machining and metrology.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Lab</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-403 engineering materials me">
+        <div class="code"><span class="bdot"></span>ME-403 · SEM 4</div>
+        <h3>Engineering Materials</h3>
+        <p class="desc">Crystal structure, phase diagrams, heat treatment of steel and alloys.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-501 heat & mass transfer me">
+        <div class="code"><span class="bdot"></span>ME-501 · SEM 5</div>
+        <h3>Heat & Mass Transfer</h3>
+        <p class="desc">Conduction, convection, radiation, heat exchangers and mass transfer.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-502 machine design me">
+        <div class="code"><span class="bdot"></span>ME-502 · SEM 5</div>
+        <h3>Machine Design</h3>
+        <p class="desc">Design of shafts, bearings, gears, springs and fasteners with failure theories.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-601 ic engines & gas turbines me">
+        <div class="code"><span class="bdot"></span>ME-601 · SEM 6</div>
+        <h3>IC Engines & Gas Turbines</h3>
+        <p class="desc">Engine cycles, combustion, performance, cooling and gas turbine cycles.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-602 refrigeration & air conditioning me">
+        <div class="code"><span class="bdot"></span>ME-602 · SEM 6</div>
+        <h3>Refrigeration & Air Conditioning</h3>
+        <p class="desc">Vapour compression and absorption cycles, refrigerants and psychrometry.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="mechanical" data-name="mechanical me-701 industrial engineering & management me">
+        <div class="code"><span class="bdot"></span>ME-701 · SEM 7</div>
+        <h3>Industrial Engineering & Management</h3>
+        <p class="desc">Work study, plant layout, production planning, quality control and CAD/CAM.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-301 surveying & geomatics ce">
+        <div class="code"><span class="bdot"></span>CE-301 · SEM 3</div>
+        <h3>Surveying & Geomatics</h3>
+        <p class="desc">Chain, compass and levelling, theodolite, contours and modern surveying.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-302 fluid mechanics ce">
+        <div class="code"><span class="bdot"></span>CE-302 · SEM 3</div>
+        <h3>Fluid Mechanics</h3>
+        <p class="desc">Fluid properties, hydrostatics, Bernoulli, flow through pipes and open channels.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-303 building materials & construction ce">
+        <div class="code"><span class="bdot"></span>CE-303 · SEM 3</div>
+        <h3>Building Materials & Construction</h3>
+        <p class="desc">Bricks, cement, concrete, timber, masonry and construction practices.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-401 structural analysis ce">
+        <div class="code"><span class="bdot"></span>CE-401 · SEM 4</div>
+        <h3>Structural Analysis</h3>
+        <p class="desc">Determinate and indeterminate structures, trusses, frames and influence lines.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-402 concrete technology ce">
+        <div class="code"><span class="bdot"></span>CE-402 · SEM 4</div>
+        <h3>Concrete Technology</h3>
+        <p class="desc">Concrete ingredients, mix design, workability, strength and durability.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-501 geotechnical engineering ce">
+        <div class="code"><span class="bdot"></span>CE-501 · SEM 5</div>
+        <h3>Geotechnical Engineering</h3>
+        <p class="desc">Soil properties, classification, permeability, consolidation and foundations.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-502 transportation engineering ce">
+        <div class="code"><span class="bdot"></span>CE-502 · SEM 5</div>
+        <h3>Transportation Engineering</h3>
+        <p class="desc">Highway alignment, pavement design, traffic engineering and railways.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-601 environmental engineering ce">
+        <div class="code"><span class="bdot"></span>CE-601 · SEM 6</div>
+        <h3>Environmental Engineering</h3>
+        <p class="desc">Water supply, treatment, sewage disposal and pollution control.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-602 design of steel structures ce">
+        <div class="code"><span class="bdot"></span>CE-602 · SEM 6</div>
+        <h3>Design of Steel Structures</h3>
+        <p class="desc">Riveted and welded connections, tension, compression and beam design.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="civil" data-name="civil ce-701 water resources engineering ce">
+        <div class="code"><span class="bdot"></span>CE-701 · SEM 7</div>
+        <h3>Water Resources Engineering</h3>
+        <p class="desc">Hydrology, irrigation, dams, canals and groundwater.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-301 data structures & algorithms cse computer">
+        <div class="code"><span class="bdot"></span>CS-301 · SEM 3</div>
+        <h3>Data Structures & Algorithms</h3>
+        <p class="desc">Arrays, stacks, queues, linked lists, trees, graphs, sorting and searching.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Solved</span></div>
+        <div class="row"><span class="meta">5 units · 10 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-302 digital logic design cse computer">
+        <div class="code"><span class="bdot"></span>CS-302 · SEM 3</div>
+        <h3>Digital Logic Design</h3>
+        <p class="desc">Number systems, Boolean algebra, combinational and sequential logic.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-303 object oriented programming cse computer">
+        <div class="code"><span class="bdot"></span>CS-303 · SEM 3</div>
+        <h3>Object Oriented Programming</h3>
+        <p class="desc">Classes, objects, inheritance, polymorphism, exception handling and files.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Lab</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-304 discrete mathematics cse computer">
+        <div class="code"><span class="bdot"></span>CS-304 · SEM 3</div>
+        <h3>Discrete Mathematics</h3>
+        <p class="desc">Sets, relations, logic, counting, graphs and algebraic structures.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Formula sheet</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-401 operating systems cse computer">
+        <div class="code"><span class="bdot"></span>CS-401 · SEM 4</div>
+        <h3>Operating Systems</h3>
+        <p class="desc">Processes, scheduling, synchronisation, memory, deadlocks and file systems.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-402 database management systems cse computer">
+        <div class="code"><span class="bdot"></span>CS-402 · SEM 4</div>
+        <h3>Database Management Systems</h3>
+        <p class="desc">ER model, relational algebra, SQL, normalisation, transactions and indexing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-403 computer organization & architecture cse computer">
+        <div class="code"><span class="bdot"></span>CS-403 · SEM 4</div>
+        <h3>Computer Organization & Architecture</h3>
+        <p class="desc">Instruction sets, pipelining, memory hierarchy and I/O organisation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-501 design & analysis of algorithms cse computer">
+        <div class="code"><span class="bdot"></span>CS-501 · SEM 5</div>
+        <h3>Design & Analysis of Algorithms</h3>
+        <p class="desc">Greedy, divide and conquer, dynamic programming, NP-completeness.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Solved</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-502 computer networks cse computer">
+        <div class="code"><span class="bdot"></span>CS-502 · SEM 5</div>
+        <h3>Computer Networks</h3>
+        <p class="desc">OSI and TCP/IP, routing, congestion control, sockets and security.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-503 software engineering cse computer">
+        <div class="code"><span class="bdot"></span>CS-503 · SEM 5</div>
+        <h3>Software Engineering</h3>
+        <p class="desc">SDLC, requirements, design, testing, agile and project management.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="cse" data-name="cse cs-601 theory of computation cse computer">
+        <div class="code"><span class="bdot"></span>CS-601 · SEM 6</div>
+        <h3>Theory of Computation</h3>
+        <p class="desc">Automata, regular languages, CFG, Turing machines and decidability.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-301 electronic devices & circuits ece electronics">
+        <div class="code"><span class="bdot"></span>EC-301 · SEM 3</div>
+        <h3>Electronic Devices & Circuits</h3>
+        <p class="desc">Diodes, BJT, FET, biasing, small-signal analysis and feedback amplifiers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 9 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-302 network theory ece electronics">
+        <div class="code"><span class="bdot"></span>EC-302 · SEM 3</div>
+        <h3>Network Theory</h3>
+        <p class="desc">KCL/KVL, network theorems, transients, resonance and two-port networks.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Solved</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-303 signals & systems ece electronics">
+        <div class="code"><span class="bdot"></span>EC-303 · SEM 3</div>
+        <h3>Signals & Systems</h3>
+        <p class="desc">LTI systems, convolution, Fourier, Laplace and Z-transforms.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-401 analog communication ece electronics">
+        <div class="code"><span class="bdot"></span>EC-401 · SEM 4</div>
+        <h3>Analog Communication</h3>
+        <p class="desc">AM, FM, modulation and demodulation, noise and receivers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-402 electromagnetic field theory ece electronics">
+        <div class="code"><span class="bdot"></span>EC-402 · SEM 4</div>
+        <h3>Electromagnetic Field Theory</h3>
+        <p class="desc">Electrostatics, magnetostatics, Maxwell's equations and wave propagation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-403 microprocessors & microcontrollers ece electronics">
+        <div class="code"><span class="bdot"></span>EC-403 · SEM 4</div>
+        <h3>Microprocessors & Microcontrollers</h3>
+        <p class="desc">8085, 8051 architecture, programming and interfacing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-501 digital signal processing ece electronics">
+        <div class="code"><span class="bdot"></span>EC-501 · SEM 5</div>
+        <h3>Digital Signal Processing</h3>
+        <p class="desc">DFT, FFT, digital filters, sampling and z-domain analysis.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-502 control systems ece electronics">
+        <div class="code"><span class="bdot"></span>EC-502 · SEM 5</div>
+        <h3>Control Systems</h3>
+        <p class="desc">Transfer functions, stability, root locus, Bode and Nyquist plots.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-601 vlsi design ece electronics">
+        <div class="code"><span class="bdot"></span>EC-601 · SEM 6</div>
+        <h3>VLSI Design</h3>
+        <p class="desc">MOS devices, CMOS logic, layout, testing and design flows.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-602 antenna & wave propagation ece electronics">
+        <div class="code"><span class="bdot"></span>EC-602 · SEM 6</div>
+        <h3>Antenna & Wave Propagation</h3>
+        <p class="desc">Antenna parameters, arrays, waveguides and propagation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-304 digital electronics logic gates boolean flip flop ece electronics">
+        <div class="code"><span class="bdot"></span>EC-304 · SEM 3</div>
+        <h3>Digital Electronics</h3>
+        <p class="desc">Number systems, Boolean algebra, K-maps, combinational and sequential circuits.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-404 linear integrated circuits op-amp oscillator ece electronics">
+        <div class="code"><span class="bdot"></span>EC-404 · SEM 4</div>
+        <h3>Linear Integrated Circuits</h3>
+        <p class="desc">Op-amps and their applications, active filters, oscillators and timers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-603 digital communication pcm modulation coding ece electronics">
+        <div class="code"><span class="bdot"></span>EC-603 · SEM 6</div>
+        <h3>Digital Communication</h3>
+        <p class="desc">PCM, digital modulation, error-control coding and spread spectrum.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ece" data-name="ece ec-604 embedded systems iot microcontroller ece electronics">
+        <div class="code"><span class="bdot"></span>EC-604 · SEM 6</div>
+        <h3>Embedded Systems &amp; IoT</h3>
+        <p class="desc">Microcontrollers, embedded C, sensors, communication protocols and IoT basics.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Lab</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-301 sensors & transducers instrumentation">
+        <div class="code"><span class="bdot"></span>EI-301 · SEM 3</div>
+        <h3>Sensors & Transducers</h3>
+        <p class="desc">Resistive, capacitive, inductive and piezoelectric transducers.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-302 analog electronics instrumentation">
+        <div class="code"><span class="bdot"></span>EI-302 · SEM 3</div>
+        <h3>Analog Electronics</h3>
+        <p class="desc">Diodes, transistors, op-amps, oscillators and active filters.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 8 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-303 measurement & instrumentation instrumentation">
+        <div class="code"><span class="bdot"></span>EI-303 · SEM 3</div>
+        <h3>Measurement & Instrumentation</h3>
+        <p class="desc">Instrument types, bridges, errors and electronic measurements.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-401 digital electronics instrumentation">
+        <div class="code"><span class="bdot"></span>EI-401 · SEM 4</div>
+        <h3>Digital Electronics</h3>
+        <p class="desc">Logic gates, Boolean algebra, sequential circuits and memories.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-402 process control instrumentation">
+        <div class="code"><span class="bdot"></span>EI-402 · SEM 4</div>
+        <h3>Process Control</h3>
+        <p class="desc">PID control, controllers, tuning and control loops.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-501 biomedical instrumentation instrumentation">
+        <div class="code"><span class="bdot"></span>EI-501 · SEM 5</div>
+        <h3>Biomedical Instrumentation</h3>
+        <p class="desc">ECG, EEG, EMG, patient monitoring and medical devices.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="ei" data-name="ei ei-601 industrial instrumentation instrumentation">
+        <div class="code"><span class="bdot"></span>EI-601 · SEM 6</div>
+        <h3>Industrial Instrumentation</h3>
+        <p class="desc">Flow, level, pressure and temperature measurement in industry.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-301 biochemistry biotech">
+        <div class="code"><span class="bdot"></span>BT-301 · SEM 3</div>
+        <h3>Biochemistry</h3>
+        <p class="desc">Biomolecules, enzymes, metabolism and bioenergetics.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-302 microbiology biotech">
+        <div class="code"><span class="bdot"></span>BT-302 · SEM 3</div>
+        <h3>Microbiology</h3>
+        <p class="desc">Microbial structure, growth, sterilisation and industrial microbes.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Lab</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-303 cell biology & genetics biotech">
+        <div class="code"><span class="bdot"></span>BT-303 · SEM 3</div>
+        <h3>Cell Biology & Genetics</h3>
+        <p class="desc">Cell structure, division, Mendelian and molecular genetics.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-401 bioprocess engineering biotech">
+        <div class="code"><span class="bdot"></span>BT-401 · SEM 4</div>
+        <h3>Bioprocess Engineering</h3>
+        <p class="desc">Bioreactors, kinetics, fermentation and downstream processing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-402 molecular biology biotech">
+        <div class="code"><span class="bdot"></span>BT-402 · SEM 4</div>
+        <h3>Molecular Biology</h3>
+        <p class="desc">DNA replication, transcription, translation and gene regulation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-501 genetic engineering biotech">
+        <div class="code"><span class="bdot"></span>BT-501 · SEM 5</div>
+        <h3>Genetic Engineering</h3>
+        <p class="desc">Recombinant DNA, cloning vectors, PCR and gene transfer.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biotech" data-name="biotech bt-601 bioinformatics biotech">
+        <div class="code"><span class="bdot"></span>BT-601 · SEM 6</div>
+        <h3>Bioinformatics</h3>
+        <p class="desc">Sequence databases, alignment, phylogenetics and structural biology.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-301 food chemistry food">
+        <div class="code"><span class="bdot"></span>FT-301 · SEM 3</div>
+        <h3>Food Chemistry</h3>
+        <p class="desc">Water, carbohydrates, proteins, lipids, vitamins and food additives.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-302 food microbiology food">
+        <div class="code"><span class="bdot"></span>FT-302 · SEM 3</div>
+        <h3>Food Microbiology</h3>
+        <p class="desc">Food spoilage, pathogens, fermentation and preservation microbiology.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-401 food process engineering food">
+        <div class="code"><span class="bdot"></span>FT-401 · SEM 4</div>
+        <h3>Food Process Engineering</h3>
+        <p class="desc">Unit operations, heat and mass transfer in food processing.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-402 food preservation food">
+        <div class="code"><span class="bdot"></span>FT-402 · SEM 4</div>
+        <h3>Food Preservation</h3>
+        <p class="desc">Canning, freezing, drying, irradiation and novel preservation.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-501 dairy technology food">
+        <div class="code"><span class="bdot"></span>FT-501 · SEM 5</div>
+        <h3>Dairy Technology</h3>
+        <p class="desc">Milk composition, processing, products and quality control.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="food" data-name="food ft-601 food quality & safety food">
+        <div class="code"><span class="bdot"></span>FT-601 · SEM 6</div>
+        <h3>Food Quality & Safety</h3>
+        <p class="desc">HACCP, food standards, sensory evaluation and adulteration.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-301 human anatomy & physiology biomedical">
+        <div class="code"><span class="bdot"></span>BM-301 · SEM 3</div>
+        <h3>Human Anatomy & Physiology</h3>
+        <p class="desc">Body systems, organs and physiological processes.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-302 biomedical instrumentation biomedical">
+        <div class="code"><span class="bdot"></span>BM-302 · SEM 3</div>
+        <h3>Biomedical Instrumentation</h3>
+        <p class="desc">Biopotentials, electrodes, amplifiers and patient monitors.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-401 biomaterials biomedical">
+        <div class="code"><span class="bdot"></span>BM-401 · SEM 4</div>
+        <h3>Biomaterials</h3>
+        <p class="desc">Metals, ceramics, polymers and biocompatibility.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-402 medical imaging biomedical">
+        <div class="code"><span class="bdot"></span>BM-402 · SEM 4</div>
+        <h3>Medical Imaging</h3>
+        <p class="desc">X-ray, CT, MRI, ultrasound and nuclear imaging.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 7 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-501 biomechanics biomedical">
+        <div class="code"><span class="bdot"></span>BM-501 · SEM 5</div>
+        <h3>Biomechanics</h3>
+        <p class="desc">Mechanics of bones, joints, prosthetics and orthotics.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span><span class="tag">Numericals</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <article class="subject" data-branch="biomedical" data-name="biomedical bm-601 diagnostic & therapeutic equipment biomedical">
+        <div class="code"><span class="bdot"></span>BM-601 · SEM 6</div>
+        <h3>Diagnostic & Therapeutic Equipment</h3>
+        <p class="desc">Ventilators, defibrillators, dialysis and surgical devices.</p>
+        <div class="tags"><span class="tag notes">Notes</span><span class="tag pyq">PYQ</span></div>
+        <div class="row"><span class="meta">5 units · 6 papers</span><span class="open">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+    </div>
+    <p class="empty-msg" id="emptyMsg">No subject matched — try “thermodynamics”, “machines”, “maths”, or clear the box.</p>
+  </div>
+</section>
+
+<section id="pyq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Previous year papers · BU Jhansi</span>
+      <h2>Old papers, arranged by year and exam</h2>
+      <p>Narrow it down by year, then open the paper you want. Where a solution is included, it is marked. No sign-in, ever.</p>
+    </div>
+
+    <div class="filters" id="pyqFilters">
+      <button class="chip active" data-year="all">All years</button>
+      <button class="chip" data-year="2025">2025</button>
+      <button class="chip" data-year="2024">2024</button>
+      <button class="chip" data-year="2023">2023</button>
+      <button class="chip" data-year="2022">2022</button>
+      <button class="chip" data-year="2021">2021</button>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Subject</th><th>Year</th><th>Exam</th><th>Includes</th><th>Download</th></tr></thead>
+          <tbody id="pyqBody">
+            <tr data-year="2025"><td><span class="sub">Electrical Engineering (BEE)</span><span class="small">EE-101 · First Year</span></td><td class="yr">2025</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2025"><td><span class="sub">Mathematics-I</span><span class="small">MA-101 · First Year</span></td><td class="yr">2025</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2024"><td><span class="sub">Data Structures & Algorithms</span><span class="small">CS-301 · CSE</span></td><td class="yr">2024</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2024"><td><span class="sub">Engineering Thermodynamics</span><span class="small">ME-301 · Mechanical</span></td><td class="yr">2024</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2024"><td><span class="sub">Electrical Circuit Analysis</span><span class="small">EE-301 · Electrical</span></td><td class="yr">2024</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2024"><td><span class="sub">Surveying & Geomatics</span><span class="small">CE-301 · Civil</span></td><td class="yr">2024</td><td>Mid-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2023"><td><span class="sub">Electronic Devices & Circuits</span><span class="small">EC-301 · ECE</span></td><td class="yr">2023</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2023"><td><span class="sub">Strength of Materials</span><span class="small">ME-303 · Mechanical</span></td><td class="yr">2023</td><td>End-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2023"><td><span class="sub">Biochemistry</span><span class="small">BT-301 · Biotech</span></td><td class="yr">2023</td><td>End-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2023"><td><span class="sub">Electrical Machines-I</span><span class="small">EE-302 · Electrical</span></td><td class="yr">2023</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2022"><td><span class="sub">Operating Systems</span><span class="small">CS-401 · CSE</span></td><td class="yr">2022</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2022"><td><span class="sub">Sensors & Transducers</span><span class="small">EI-301 · E&I</span></td><td class="yr">2022</td><td>End-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2022"><td><span class="sub">Fluid Mechanics & Machinery</span><span class="small">ME-302 · Mechanical</span></td><td class="yr">2022</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2021"><td><span class="sub">Control Systems</span><span class="small">EE-501 · Electrical</span></td><td class="yr">2021</td><td>End-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2021"><td><span class="sub">Food Process Engineering</span><span class="small">FT-401 · Food Tech</span></td><td class="yr">2021</td><td>End-Sem</td><td><span class="badge">Paper + Solution</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+            <tr data-year="2021"><td><span class="sub">Medical Imaging</span><span class="small">BM-402 · Biomedical</span></td><td class="yr">2021</td><td>End-Sem</td><td><span class="badge">Paper only</span></td><td><a class="dl" href="#">Download PDF</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="books" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Books &amp; references</span>
+      <h2>Teacher's books and reference material</h2>
+      <p>Full books shared by teachers and seniors, kept right next to the notes. Open one and it lands in a new tab.</p>
+    </div>
+    <div class="book-grid">
+      <article class="book" data-branch="first-year">
+        <div class="cover">PH-101</div>
+        <div class="book-body">
+          <span class="code">PH-101 · SEM 1</span>
+          <h3>Engineering Physics — Teacher's Book</h3>
+          <p class="desc">The course book used in class, uploaded by the department teacher.</p>
+          <div class="tags"><span class="tag notes">Book</span><span class="tag pyq">PDF</span></div>
+          <a class="dl" href="https://drive.google.com/file/d/1MqrrirYNsGV_NIZHQvykIiIlQG0W1gYi/view" target="_blank" rel="noopener">Open book</a>
+        </div>
+      </article>
+      <article class="book book-soon">
+        <div class="cover">+</div>
+        <div class="book-body">
+          <span class="code">MORE COMING</span>
+          <h3>Your teacher's book</h3>
+          <p class="desc">Send a book and it gets its own card here.</p>
+          <div class="tags"><span class="tag">Request</span></div>
+          <button class="dl" type="button" id="addBookBtn">Add a book</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="syllabus" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Syllabus</span>
+      <h2>The syllabus, department by department</h2>
+      <p>Every subject here is mapped to the Bundelkhand University scheme. Open a department to see its units, marks and weightage.</p>
+    </div>
+    <div class="syl-grid">
+      <div class="syl"><h3>First Year (Common)</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Electrical Engineering</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Mechanical Engineering</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Civil Engineering</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Computer Science &amp; Engineering</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Electronics &amp; Communication</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Electronics &amp; Instrumentation</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Biotechnology</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Food Technology</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+      <div class="syl"><h3>Biomedical Engineering</h3><button class="dl" data-doc="syllabus">Open syllabus</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="formulas" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Quick revision</span>
+      <h2>Formula sheets</h2>
+      <p>One-page revision sheets for the most-used subjects — every formula you need, nothing extra. Perfect for the last week before exams.</p>
+    </div>
+    <div class="syl-grid">
+      <div class="syl"><h3>Engineering Mathematics</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Basic Electrical Engineering</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Network Theory</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Electrical Machines</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Engineering Thermodynamics</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Strength of Materials</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Signals &amp; Systems</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Digital Electronics</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+      <div class="syl"><h3>Control Systems</h3><button class="dl" data-doc="formulas">Open sheet</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" style="padding-top:12px">
+  <div class="wrap">
+    <div class="mission">
+      <div class="grid">
+        <div>
+          <span class="eyebrow">Why this exists</span>
+          <h2>So studying never depends on who you know.</h2>
+          <p>Not everyone reaches college with a folder of notes and a senior ready to help. Many of us turned up in a new city with little more than a suitcase and a timetable.</p>
+          <p>So we gathered what we could find — notes, question papers, syllabi — and arranged it here, once, for everyone. Open the page, take the file you need, and get back to studying. No favour, no condition, no waiting.</p>
+        </div>
+        <div class="pulse">
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0"/></svg>
+            <div><b>Free, for good</b><span>No charge, no subscription, no locked section.</span></div>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4z"/></svg>
+            <div><b>Yours to take</b><span>Everything is open — you never have to ask anyone for it.</span></div>
+          </div>
+          <div class="item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            <div><b>Kept going by students</b><span>Uploaded and checked by students across the departments.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Behind the site</span>
+      <h2>The students who keep it going</h2>
+      <p>This page runs on material that students contributed. Any name or detail appears only with that person's permission.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member" data-branch="first-year">
+        <div class="av">GK</div>
+        <h3>Gaurav Kumar</h3>
+        <div class="role">Founder &amp; maintainer</div>
+        <p>Built JuniorFirst and keeps it free and running for everyone.</p>
+      </div>
+      <div class="member" data-branch="electrical">
+        <div class="av">EL</div>
+        <h3>Department helpers</h3>
+        <div class="role">Contributors</div>
+        <p>Gather and verify material for their own department.</p>
+      </div>
+      <div class="member" data-branch="mechanical">
+        <div class="av">JR</div>
+        <h3>Juniors</h3>
+        <div class="role">Every batch</div>
+        <p>Add what helped them, so the next batch starts with more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How to use it</span>
+      <h2>Three clicks from here to a downloaded paper</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Choose your department</h3><p>Tap your department or search a subject. Each card shows what is inside the download.</p></div>
+      <div class="step"><div class="num">2</div><h3>Open a note or a paper</h3><p>Read unit-wise notes, a revision sheet, or a previous year paper sorted by year.</p></div>
+      <div class="step"><div class="num">3</div><h3>Download and revise</h3><p>Save the PDF and study offline — no login screen in the way.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tips" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Exam tips</span>
+      <h2>How toppers actually use this</h2>
+      <p>Short, practical habits that turn a pile of PDFs into marks.</p>
+    </div>
+    <div class="tip-grid">
+      <div class="tip"><div class="num">1</div><h3>Start with the PYQs</h3><p>Solve the last three years first. You will see which units repeat every time, and where the marks really are.</p></div>
+      <div class="tip"><div class="num">2</div><h3>Go unit by unit</h3><p>Finish one unit completely before starting the next. Half-finished units are where marks quietly disappear.</p></div>
+      <div class="tip"><div class="num">3</div><h3>Make one formula sheet</h3><p>Write every formula of the subject on a single page. Revise that page daily in the last week.</p></div>
+      <div class="tip"><div class="num">4</div><h3>Mark the repeats</h3><p>A question that appears every year is free marks. Highlight those in your notes and never skip them.</p></div>
+      <div class="tip"><div class="num">5</div><h3>Practise in real time</h3><p>Attempt one full paper in three hours, no breaks, no notes. Speed is half the battle.</p></div>
+      <div class="tip"><div class="num">6</div><h3>Revise, don't re-read</h3><p>Close the book and write what you remember. That is what actually sticks in the exam hall.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:12px">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions students ask</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Is everything really free?</summary><p>Yes. No login, no fee, and no locked section. Every note, paper and book opens without paying anything.</p></details>
+      <details><summary>Do I need to create an account?</summary><p>No account and no sign-up. Open the site and start studying straight away.</p></details>
+      <details><summary>How do I download notes?</summary><p>Pick your department, tap a subject, then use the download buttons. Files open in a new tab.</p></details>
+      <details><summary>Which departments are covered?</summary><p>Ten: First Year (Common), Electrical, Mechanical, Civil, CSE, ECE, Electronics &amp; Instrumentation, Biotechnology, Food Technology and Biomedical.</p></details>
+      <details><summary>How can I contribute notes or books?</summary><p>Use the Share button and send the file link. It gets added for everyone who comes after you.</p></details>
+      <details><summary>Is my activity tracked?</summary><p>No. There are no ads, no tracking and nothing to log in to.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contribute">
+  <div class="wrap">
+    <div class="banner">
+      <div>
+        <span class="eyebrow">Add to it</span>
+        <h2>Got notes that helped you? Share them.</h2>
+        <p>The library only grows when students add to it. Put up your notes, solved papers or a formula sheet, and it stays free for everyone after you.</p>
+        <div class="hero-cta" style="margin-top:0">
+          <button class="btn btn-light" type="button" id="shareBtn">Share your notes</button>
+          <a class="btn btn-outline" href="#branches">Explore the library</a>
+        </div>
+      </div>
+      <div class="mini">
+        <div><div class="n">₹0</div><div class="l">Cost, for everyone</div></div>
+        <div><div class="n">94+</div><div class="l">Subjects live</div></div>
+        <div><div class="n">100%</div><div class="l">Open access</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="brand" href="#top">
+          <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 11.4C13.7 10.1 10.6 9.8 7.2 10.7v10.6c3.4-.9 6.5-.6 8.8.7 2.3-1.3 5.4-1.6 8.8-.7V10.7c-3.4-.9-6.5-.6-8.8.7z" fill="#fff"/><path d="M16 11.4v10.6" stroke="rgba(4,33,30,.22)" stroke-width="1.1" fill="none"/></svg></span>
+          <span>JuniorFirst<small>Notes &amp; Papers Library</small></span>
+        </a>
+        <p>A free, student-run collection of engineering notes, previous year papers and syllabus for all departments at Bundelkhand University, Jhansi.</p>
+      </div>
+      <div>
+        <h4>Study</h4>
+        <ul>
+          <li><a href="#branches">Branches</a></li>
+          <li><a href="#subjects">All subjects</a></li>
+          <li><a href="#books">Teacher's books</a></li>
+          <li><a href="#pyq">PYQ papers</a></li>
+          <li><a href="#formulas">Formula sheets</a></li>
+          <li><a href="#syllabus">Syllabus</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#contribute">Contribute notes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#team">Our team</a></li>
+          <li><a href="#mission">Why we built this</a></li>
+          <li><a href="#how">How it works</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>University</h4>
+        <ul>
+          <li><a href="#top">Bundelkhand University, Jhansi</a></li>
+          <li><a href="#top">Institute of Engineering &amp; Technology</a></li>
+          <li><a href="#contribute">Request your branch</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> JuniorFirst — built by <b>Gaurav Kumar</b>. Free for every BU Jhansi student. Please do not copy or re-host.</span>
+      <span class="mono">Free · Open · No login</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sheet-backdrop" id="backdrop"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Details">
+  <div class="handle"></div>
+  <button class="x" id="sheetClose" aria-label="Close">&times;</button>
+  <div id="sheetBody"></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<nav class="tabbar" aria-label="Quick navigation">
+  <a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>Home</a>
+  <a href="#subjects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M8 7h6"/></svg>Subjects</a>
+  <a href="#books"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h6a3 3 0 0 1 3 3v11a2 2 0 0 0-2-2H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v11a2 2 0 0 1 2-2h7z"/></svg>Books</a>
+  <a href="#pyq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>PYQ</a>
+  <button type="button" id="tabContribute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="m7 14 5-5 5 5"/><path d="M5 21h14"/></svg>Share</button>
+</nav>
+<button class="totop" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<script>
+(function(){
+  "use strict";
+  var root = document.documentElement;
+
+  var saved = null;
+  try { saved = localStorage.getItem('juniorfirst-theme'); } catch(e){}
+  if (saved) root.setAttribute('data-theme', saved);
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) root.setAttribute('data-theme','dark');
+
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('juniorfirst-theme', next); } catch(e){}
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#subjGrid .subject'));
+  var emptyMsg = document.getElementById('emptyMsg');
+  var searchInput = document.getElementById('heroSearch');
+  var branchSelect = document.getElementById('branchSelect');
+  var activeBranch = 'all';
+  var savedSet = {};
+  try { savedSet = JSON.parse(localStorage.getItem('juniorfirst-saved') || '{}'); } catch(e){ savedSet = {}; }
+
+  function applyFilters(){
+    var q = (searchInput.value || '').trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function(card){
+      var name = card.getAttribute('data-name') || '';
+      var branch = card.getAttribute('data-branch') || '';
+      var key = card.getAttribute('data-key') || '';
+      var okB;
+      if (activeBranch === 'saved') okB = !!savedSet[key];
+      else okB = activeBranch === 'all' || branch === activeBranch;
+      var okQ = !q || name.indexOf(q) !== -1;
+      var show = okB && okQ;
+      card.style.display = show ? '' : 'none';
+      if (show) shown++;
+    });
+    emptyMsg.style.display = shown ? 'none' : 'block';
+  }
+
+  function setBranch(branch){
+    activeBranch = branch;
+    if (branchSelect) { branchSelect.value = branch; if (branchSelect.value !== branch) branchSelect.value = 'all'; }
+    document.querySelectorAll('#subjFilters .chip').forEach(function(c){
+      c.classList.toggle('active', c.getAttribute('data-filter') === branch);
+    });
+    applyFilters();
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+    document.addEventListener('keydown', function(e){
+      if (e.key === '/' && document.activeElement !== searchInput){ e.preventDefault(); showScreen('subjects'); searchInput.focus(); }
+    });
+  }
+
+  document.getElementById('subjFilters').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip'); if(!btn) return;
+    setBranch(btn.getAttribute('data-filter'));
+  });
+
+  if (branchSelect) {
+    branchSelect.addEventListener('change', function(){ setBranch(branchSelect.value); });
+  }
+
+  document.querySelectorAll('.branch[data-branch]').forEach(function(b){
+    b.addEventListener('click', function(){
+      setBranch(b.getAttribute('data-branch'));
+      showScreen('subjects');
+    });
+  });
+
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#pyqBody tr'));
+  document.getElementById('pyqFilters').addEventListener('click', function(e){
+    var btn = e.target.closest('.chip'); if(!btn) return;
+    this.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('active'); });
+    btn.classList.add('active');
+    var yr = btn.getAttribute('data-year');
+    rows.forEach(function(r){ r.style.display = (yr === 'all' || r.getAttribute('data-year') === yr) ? '' : 'none'; });
+  });
+
+  document.querySelectorAll('a.dl[href="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); openLink(); });
+  });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+  }
+  var deferredPrompt = null;
+  var installBtn = document.getElementById('installBtn');
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferredPrompt = e;
+    if (installBtn) installBtn.classList.add('show');
+  });
+  if (installBtn) {
+    installBtn.addEventListener('click', function(){
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(){ deferredPrompt = null; });
+        return;
+      }
+      toast('To install: open your browser menu and tap "Add to Home screen".');
+    });
+  }
+  window.addEventListener('appinstalled', function(){ if (installBtn) installBtn.classList.remove('show'); });
+
+  /* ---------- CONFIG: paste your links here to switch downloads on ---------- */
+  var DRIVE = '';      /* your Google Drive folder link (general downloads) */
+  var FORM = '';       /* optional: a Google Form link to collect uploads */
+  var WHATSAPP = '';   /* e.g. '919876543210' */
+  var EMAIL = '';      /* e.g. 'you@example.com' */
+  var SYLLABUS = '';   /* link to your syllabus folder */
+  var FORMULAS = '';   /* link to your formula-sheet folder */
+  var BRANCH_NAMES = { 'first-year':'First Year (Common)','electrical':'Electrical Engineering','mechanical':'Mechanical Engineering','civil':'Civil Engineering','cse':'Computer Science & Engineering','ece':'Electronics & Communication','ei':'Electronics & Instrumentation','biotech':'Biotechnology','food':'Food Technology','biomedical':'Biomedical Engineering' };
+
+  var backdrop = document.getElementById('backdrop');
+  var sheet = document.getElementById('sheet');
+  var sheetBody = document.getElementById('sheetBody');
+  var toastEl = document.getElementById('toast');
+  var toastT;
+  function toast(msg){ if(!toastEl) return; toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2800); }
+  function openSheet(){ backdrop.classList.add('show'); sheet.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function closeSheet(){ backdrop.classList.remove('show'); sheet.classList.remove('show'); document.body.style.overflow = ''; }
+  function openLink(){ if (DRIVE){ window.open(DRIVE, '_blank'); } else { toast('Almost there - paste your Google Drive folder link in index.html to switch downloads on.'); } }
+  backdrop.addEventListener('click', closeSheet);
+  document.getElementById('sheetClose').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeSheet(); });
+
+  function persistSaved(){ try { localStorage.setItem('juniorfirst-saved', JSON.stringify(savedSet)); } catch(e){} }
+  function toggleSave(card){
+    var k = card.getAttribute('data-key'); if(!k) return;
+    if (savedSet[k]) { delete savedSet[k]; card.classList.remove('saved'); toast('Removed from saved'); }
+    else { savedSet[k] = 1; card.classList.add('saved'); toast('Saved for later'); }
+    persistSaved();
+    if (activeBranch === 'saved') applyFilters();
+  }
+
+  function buildSubjectSheet(card){
+    var code = (card.querySelector('.code') || {}).textContent || '';
+    var title = (card.querySelector('h3') || {}).textContent || '';
+    var desc = (card.querySelector('.desc') || {}).textContent || '';
+    var meta = (card.querySelector('.meta') || {}).textContent || '';
+    var bname = BRANCH_NAMES[card.getAttribute('data-branch')] || '';
+    var tags = Array.prototype.map.call(card.querySelectorAll('.tags .tag'), function(t){ return '<span class="tag">' + t.textContent + '</span>'; }).join('');
+    var isSaved = card.classList.contains('saved');
+    var bookUrl = card.getAttribute('data-book') || '';
+    sheetBody.innerHTML =
+      '<span class="code">' + code + '</span>' +
+      '<h2>' + title + '</h2>' +
+      '<p>' + desc + '</p>' +
+      '<div class="tags">' + tags + '</div>' +
+      '<p style="font-size:.8rem;color:var(--text-faint);margin-top:.7rem">' + meta + ' \u00b7 ' + bname + '</p>' +
+      '<div class="act-row">' +
+        (bookUrl ? '<a class="act book" href="' + bookUrl + '" target="_blank" rel="noopener">Open book</a>' : '') +
+        '<button class="act primary" data-go="notes">Notes PDF</button>' +
+        '<button class="act" data-go="pyq">Previous year papers</button>' +
+        '<button class="act" data-go="formula">Formula sheet</button>' +
+        '<button class="act" data-go="save">' + (isSaved ? 'Saved' : 'Save') + '</button>' +
+      '</div>';
+    Array.prototype.forEach.call(sheetBody.querySelectorAll('[data-go]'), function(b){
+      b.addEventListener('click', function(){
+        var go = b.getAttribute('data-go');
+        if (go === 'pyq') { closeSheet(); showScreen('pyq'); return; }
+        if (go === 'save') { toggleSave(card); closeSheet(); return; }
+        openLink();
+      });
+    });
+  }
+
+  function buildContributeSheet(){
+    var depts = Object.keys(BRANCH_NAMES).map(function(k){ return '<option>' + BRANCH_NAMES[k] + '</option>'; }).join('');
+    sheetBody.innerHTML =
+      '<span class="code">Contribute</span>' +
+      '<h2>Share your notes</h2>' +
+      '<p>Add your material and it will help the next batch. Fill this in and hit send.</p>' +
+      '<div class="field"><label>Your name</label><input id="cName" placeholder="e.g. Aman Verma"></div>' +
+      '<div class="field"><label>Department</label><select id="cDept">' + depts + '</select></div>' +
+      '<div class="field"><label>Subject</label><input id="cSubj" placeholder="e.g. Control Systems"></div>' +
+      '<div class="field"><label>Link to your file (optional)</label><input id="cLink" placeholder="https://drive.google.com/..."></div>' +
+      '<div class="act-row"><button class="act primary" id="cSend">Send</button></div>';
+    document.getElementById('cSend').addEventListener('click', function(){
+      var name = (document.getElementById('cName').value || '').trim();
+      var dept = document.getElementById('cDept').value;
+      var subj = (document.getElementById('cSubj').value || '').trim();
+      var link = (document.getElementById('cLink').value || '').trim();
+      if (!subj) { toast('Please add the subject name.'); return; }
+      var msg = 'New notes for JuniorFirst | Name: ' + name + ' | Dept: ' + dept + ' | Subject: ' + subj + ' | Link: ' + link;
+      try { if (navigator.clipboard) navigator.clipboard.writeText(msg); } catch(e){}
+      if (FORM) { window.open(FORM, '_blank'); toast('Opening the upload form - attach your file there.'); }
+      else if (WHATSAPP) { window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank'); toast('WhatsApp opened with your details.'); }
+      else if (EMAIL) { window.open('mailto:' + EMAIL + '?subject=' + encodeURIComponent('Notes submission: ' + subj) + '&body=' + encodeURIComponent(msg), '_blank'); toast('Email opened with your details.'); }
+      else if (navigator.share) { navigator.share({ title: 'Notes submission', text: msg }).catch(function(){}); }
+      else { window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank'); toast('Details copied - send them to the site admin to finish.'); }
+      closeSheet();
+    });
+  }
+
+  function openContribute(){ buildContributeSheet(); openSheet(); }
+
+  cards.forEach(function(card, i){
+    if (!card.getAttribute('data-key')) card.setAttribute('data-key', 'k' + i);
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'bm'; b.setAttribute('aria-label', 'Save subject');
+    b.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>';
+    b.addEventListener('click', function(e){ e.stopPropagation(); toggleSave(card); });
+    card.appendChild(b);
+    if (savedSet[card.getAttribute('data-key')]) card.classList.add('saved');
+    card.addEventListener('click', function(){ buildSubjectSheet(card); openSheet(); });
+  });
+
+  var sf = document.getElementById('subjFilters');
+  if (sf) {
+    var chip = document.createElement('button');
+    chip.type = 'button'; chip.className = 'chip'; chip.setAttribute('data-filter', 'saved'); chip.textContent = 'Saved';
+    sf.appendChild(chip);
+  }
+
+  var tc = document.getElementById('tabContribute');
+  if (tc) tc.addEventListener('click', openContribute);
+  var sb = document.getElementById('shareBtn'); if (sb) sb.addEventListener('click', openContribute);
+  var ab = document.getElementById('addBookBtn'); if (ab) ab.addEventListener('click', openContribute);
+  var ds = document.getElementById('drawerShare'); if (ds) ds.addEventListener('click', openContribute);
+
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function(){ toTop.classList.toggle('show', window.scrollY > 700); }, {passive:true});
+    toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  }
+
+  function openDoc(url){ if (url) { window.open(url, '_blank'); } else { openLink(); } }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-doc]'), function(b){
+    b.addEventListener('click', function(){ openDoc(b.getAttribute('data-doc') === 'syllabus' ? SYLLABUS : FORMULAS); });
+  });
+
+  /* ---------- app screens + drawer ---------- */
+  var SCREENS = Array.prototype.slice.call(document.querySelectorAll('main > section'));
+  var SCREEN_IDS = {};
+  SCREENS.forEach(function(s){ if (s.id) SCREEN_IDS[s.id] = 1; });
+  function showScreen(id){
+    if (!SCREEN_IDS[id]) id = 'home';
+    SCREENS.forEach(function(s){ s.style.display = (s.id === id) ? '' : 'none'; });
+    closeDrawer();
+    window.scrollTo(0, 0);
+  }
+  var drawerEl = document.getElementById('drawer');
+  var drawerBackdrop = document.getElementById('drawerBackdrop');
+  function openDrawer(){ drawerEl.classList.add('show'); drawerBackdrop.classList.add('show'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer(){ if (!drawerEl) return; drawerEl.classList.remove('show'); drawerBackdrop.classList.remove('show'); document.body.style.overflow = ''; }
+  var menuBtn = document.getElementById('menuBtn'); if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  drawerBackdrop.addEventListener('click', closeDrawer);
+  Array.prototype.forEach.call(document.querySelectorAll('.drawer-links [data-screen]'), function(a){
+    a.addEventListener('click', function(){ showScreen(a.getAttribute('data-screen')); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDrawer(); });
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = (a.getAttribute('href') || '').slice(1);
+    if (id && SCREEN_IDS[id]) { e.preventDefault(); showScreen(id); }
+  });
+  showScreen('home');
+
+  /* ---------- copy protection (deterrent, owned by Gaurav Kumar) ---------- */
+  var RIGHTS = '© Gaurav Kumar — this site is protected. Please do not copy or re-host it.';
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); toast(RIGHTS); });
+  document.addEventListener('keydown', function(e){
+    var k = (e.key || '').toLowerCase();
+    var mod = e.ctrlKey || e.metaKey;
+    if (e.key === 'F12') { e.preventDefault(); toast(RIGHTS); return; }
+    if (mod && (k === 'u' || k === 's')) { e.preventDefault(); toast(RIGHTS); return; }
+    if (mod && e.shiftKey && (k === 'i' || k === 'j' || k === 'c')) { e.preventDefault(); toast(RIGHTS); return; }
+  });
+  document.addEventListener('copy', function(e){
+    var sel = '';
+    try { sel = String(window.getSelection()); } catch(err){}
+    if (sel.length > 120) { e.preventDefault(); toast(RIGHTS); }
+  });
+  try {
+    console.log('%cJuniorFirst', 'font-size:26px;font-weight:800;color:#0d9488');
+    console.log('%c© 2026 Gaurav Kumar. All rights reserved. This site and its code belong to Gaurav Kumar. Please do not copy, clone or re-host without permission.', 'font-size:12px;color:#b45309');
+  } catch(err){}
+
+  /* ---------- hero stat count-up ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function(el){
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    if (reduce) { el.textContent = target; return; }
+    var start = null, dur = 1100;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  });
+})();
+</script>
+</body>
+</html>
